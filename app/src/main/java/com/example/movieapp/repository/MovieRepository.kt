@@ -1,4 +1,4 @@
-package com.example.movieapp.data
+package com.example.movieapp.repository
 
 import com.example.movieapp.network.ApiService
 import com.example.movieapp.network.RetrofitModule

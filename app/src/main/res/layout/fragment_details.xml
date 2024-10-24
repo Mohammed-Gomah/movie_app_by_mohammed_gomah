@@ -28,7 +28,7 @@
                 <ImageView
                     android:id="@+id/detailsImage"
                     android:layout_width="match_parent"
-                    android:src="@drawable/placeholder"
+                    android:src="@drawable/image_placeholder"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     />

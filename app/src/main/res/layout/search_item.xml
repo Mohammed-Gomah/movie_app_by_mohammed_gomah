@@ -1,44 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/searchCard"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="32dp">
 
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/searchCard"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        app:cardElevation="10dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/searchImageItem"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="130dp"
+            android:layout_height="180dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/movie_src" />
-    </androidx.cardview.widget.CardView>
+            android:src="@drawable/image_placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/searchItemName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:padding="10dp"
+            android:text="Movie Name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/searchImageItem"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/star"
+            app:layout_constraintBottom_toBottomOf="@id/itemRate"
+            app:layout_constraintStart_toEndOf="@id/itemRate"
+            app:layout_constraintTop_toTopOf="@id/itemRate" />
+
+        <TextView
+            android:id="@+id/itemRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="1.0"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/rating"
+            app:layout_constraintStart_toEndOf="@id/rating"
+            app:layout_constraintTop_toBottomOf="@id/rating"
+            app:layout_constraintTop_toTopOf="@id/rating" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Rating : "
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/searchImageItem"
+            app:layout_constraintTop_toBottomOf="@id/searchItemName" />
+
+        <TextView
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:text="Start : "
+            android:textSize="16dp"
+            app:layout_constraintStart_toEndOf="@id/searchImageItem"
+            app:layout_constraintTop_toBottomOf="@id/rating" />
+
+        <TextView
+            android:id="@+id/startDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="00/00/0000"
+            android:textStyle="italic"
+
+            app:layout_constraintBottom_toBottomOf="@+id/start"
+            app:layout_constraintStart_toEndOf="@id/start"
+            app:layout_constraintTop_toTopOf="@id/start" />
+
+        <TextView
+            android:id="@+id/end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:text="End :   "
+            android:textSize="16dp"
+            app:layout_constraintStart_toEndOf="@id/searchImageItem"
+            app:layout_constraintTop_toBottomOf="@id/start" />
+
+        <TextView
+            android:id="@+id/endDate"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="00/00/0000"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/end"
+            app:layout_constraintStart_toEndOf="@id/end"
+            app:layout_constraintTop_toTopOf="@id/end" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <TextView
-        android:layout_width="0dp"
-        android:id="@+id/searchItemName"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:ellipsize="end"
-        android:lines="1"
-        android:padding="10dp"
-        android:text="Movie Name"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/searchCard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/searchCard"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
