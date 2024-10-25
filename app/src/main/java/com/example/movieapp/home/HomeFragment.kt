@@ -1,5 +1,7 @@
 package com.example.movieapp.home
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +17,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val movieViewModel: HomeViewModel by viewModels()
     private lateinit var homeAdapter: HomeAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,17 +35,18 @@ class HomeFragment : Fragment() {
 
     }
 
+
     private fun getMovies() {
-        binding.progressBar.visibility = View.VISIBLE
+        binding.homeLottieAnimation.visibility = View.VISIBLE
         movieViewModel.movie.observe(viewLifecycleOwner) { movie ->
-            binding.progressBar.visibility = View.GONE
+            binding.homeLottieAnimation.visibility = View.GONE
             homeAdapter.setMovies(movie)
         }
-        movieViewModel.getMovie()
+            movieViewModel.getMovie()
     }
 
     private fun prepareHomeAdapter() {
-        homeAdapter = HomeAdapter(listOf()){imdb->
+        homeAdapter = HomeAdapter(listOf()) { imdb ->
             val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(imdb)
             findNavController().navigate(action)
         }

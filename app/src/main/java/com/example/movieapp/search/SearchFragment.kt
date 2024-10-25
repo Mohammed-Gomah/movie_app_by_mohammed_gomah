@@ -36,6 +36,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun prepareAdapter() {
+
         searchAdapter = SearchAdapter(listOf()){movieImdb->
             val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movieImdb)
             findNavController().navigate(action)
@@ -47,7 +48,9 @@ class SearchFragment : Fragment() {
     }
 
     private fun observeViewModel() {
+        binding.searchLottieAnimation.visibility = View.VISIBLE
         movieViewModel.movie.observe(viewLifecycleOwner) { movies ->
+            binding.searchLottieAnimation.visibility = View.GONE
             searchAdapter.filterList(movies)
         }
     }
@@ -57,10 +60,14 @@ class SearchFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (!newText.isNullOrEmpty()) {
+
                     movieViewModel.searchMovieByName(newText)
+                }else{
+                    binding.searchLottieAnimation.visibility = View.GONE
+                    searchAdapter.filterList(emptyList())
+                    binding.searchLottieAnimation.visibility = View.VISIBLE
                 }
                 return true
             }

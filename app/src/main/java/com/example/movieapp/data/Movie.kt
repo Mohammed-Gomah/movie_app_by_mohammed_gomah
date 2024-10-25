@@ -1,13 +1,16 @@
 package com.example.movieapp.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+
+@Entity(tableName = "movie_table")
 data class MovieResponse(
     val score: Double,
     val show: Movie
 )
-
 data class Movie(
-    val id: Int?,
+    @PrimaryKey(autoGenerate = true) val id: Int?,
     val name: String?,
     val language: String?,
     val genres: List<String>?,
@@ -56,7 +59,7 @@ data class Country(
 data class Externals(
     val tvrage: Int?,
     val thetvdb: Int?,
-    val imdb: String?
+   val imdb: String?
 )
 
 data class Image(
