@@ -13,7 +13,7 @@ import com.example.movieapp.data.Movie
 
 class FavouriteAdapter(
     private var favouriteList: List<Movie>,
-    private val onItemClick: (String) -> Unit
+    private val onItemClick: (String,Int) -> Unit
 ) :
     RecyclerView.Adapter<FavouriteAdapter.FavouriteViewHolder>() {
     inner class FavouriteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,7 +37,7 @@ class FavouriteAdapter(
         holder.apply {
             favouriteName.text = favouriteItem.name
             favouriteCard.setOnClickListener {
-                onItemClick(favouriteItem.externals?.imdb?:"1")
+               onItemClick(favouriteItem.externals?.imdb?:"",favouriteItem.id)
             }
         }
 

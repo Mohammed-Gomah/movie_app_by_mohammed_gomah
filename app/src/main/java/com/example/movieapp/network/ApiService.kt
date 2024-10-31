@@ -1,9 +1,10 @@
 package com.example.movieapp.network
 
-import com.example.movieapp.data.Actor
+import com.example.movieapp.data.Cast
 import com.example.movieapp.data.Movie
 import com.example.movieapp.data.MovieResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -17,7 +18,7 @@ interface ApiService {
     suspend fun getMovieDetailsById(@Query("imdb") id : String) : Movie
 
     @GET(RetrofitModule.CAST_END_POINT)
-    suspend fun getCastById(@Query("id") id: String) : List<Actor>
+    suspend fun getCastById(@Path("id") id: Int) : List<Cast>
 
 
 }

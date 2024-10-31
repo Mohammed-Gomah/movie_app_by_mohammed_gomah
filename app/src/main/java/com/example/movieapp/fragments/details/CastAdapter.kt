@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.movieapp.R
-import com.example.movieapp.data.Actor
+import com.example.movieapp.data.Cast
 
-class ActorAdapter(private var actorList : List<Actor> ):RecyclerView.Adapter<ActorAdapter.ActorViewHolder>() {
+class CastAdapter(private var actorList: List<Cast>) :
+    RecyclerView.Adapter<CastAdapter.ActorViewHolder>() {
     inner class ActorViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
         val actorName :TextView = itemView.findViewById(R.id.actorName)
         val actorImage : ImageView = itemView.findViewById(R.id.actorImage)
@@ -35,7 +36,7 @@ class ActorAdapter(private var actorList : List<Actor> ):RecyclerView.Adapter<Ac
             .into(holder.actorImage)
     }
 
-    fun setActors(newActorsList:List<Actor>){
+    fun setCast(newActorsList: List<Cast>) {
         actorList = newActorsList
         notifyDataSetChanged()
     }

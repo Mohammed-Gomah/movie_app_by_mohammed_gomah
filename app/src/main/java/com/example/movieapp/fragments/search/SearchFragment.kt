@@ -32,16 +32,13 @@ class SearchFragment : Fragment() {
         prepareAdapter()
         setupSearchListener()
         observeViewModel()
-        binding.btnBack.setOnClickListener {
-            requireActivity().finish()
-        }
-
     }
 
     private fun prepareAdapter() {
 
-        searchAdapter = SearchAdapter(listOf()){movieImdb->
-            val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movieImdb)
+        searchAdapter = SearchAdapter(listOf()) { movieImdb, id ->
+            val action =
+                SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movieImdb, id)
             findNavController().navigate(action)
         }
         binding.searchRecyclerView.apply {
@@ -67,6 +64,7 @@ class SearchFragment : Fragment() {
             }
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (!newText.isNullOrEmpty()) {
+                    binding.searchRecyclerView.visibility = View.VISIBLE
                     movieViewModel.searchMovieByName(newText)
                 } else {
                     binding.searchRecyclerView.visibility = View.GONE

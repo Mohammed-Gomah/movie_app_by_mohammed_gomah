@@ -46,8 +46,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun prepareHomeAdapter() {
-        homeAdapter = HomeAdapter(listOf()) { imdb ->
-            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(imdb)
+        homeAdapter = HomeAdapter(listOf()) { imdb , id->
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(imdb,id)
             findNavController().navigate(action)
         }
         val layoutManager = GridLayoutManager(requireContext(), 2)

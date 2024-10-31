@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.movieapp.R
 import com.example.movieapp.data.Movie
 import com.example.movieapp.movieRoom.MovieDatabase
 import com.example.movieapp.repository.MovieRepository
@@ -36,24 +35,39 @@ class DetailsViewModel(application: Application) : AndroidViewModel(application)
     }
 
     fun insertMovie() {
-        viewModelScope.launch {
-            repository.insertMovie(_movie.value!!)
-            _isFavourite.postValue(true)
+        try {
+            viewModelScope.launch {
+                repository.insertMovie(_movie.value!!)
+                _isFavourite.postValue(true)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
+
     }
 
     fun deleteMovie() {
-        viewModelScope.launch {
-            repository.deleteMovieById(_movie.value?.id!!)
-            _isFavourite.postValue(false)
+        try {
+            viewModelScope.launch {
+                repository.deleteMovieById(_movie.value?.id!!)
+                _isFavourite.postValue(false)
+            }
+        }catch (e:Exception){
+            e.printStackTrace()
         }
+
     }
 
-    fun checkFavourite(movieId: Int){
-        viewModelScope.launch {
-            val movie = repository.getMovieById(movieId)
-            _isFavourite.postValue(movie!=null)
+    private fun checkFavourite(movieId: Int) {
+        try {
+            viewModelScope.launch {
+                val movie = repository.getMovieById(movieId)
+                _isFavourite.postValue(movie!=null)
+            }
+        }catch (e:Exception){
+            e.printStackTrace()
         }
+
     }
 
 

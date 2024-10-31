@@ -13,7 +13,7 @@ import com.example.movieapp.data.Movie
 
 class HomeAdapter(
     private var movieList: List<Movie>,
-    private val onItemClick: (String) -> Unit
+    private val onItemClick: (String,Int) -> Unit,
 ) :
     RecyclerView.Adapter<HomeAdapter.MovieViewHolder>() {
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -36,7 +36,7 @@ class HomeAdapter(
         val movie = movieList[position]
         holder.movieName.text = movie.name
         holder.homeCard.setOnClickListener {
-            onItemClick(movie.externals?.imdb ?: "")
+            onItemClick(movie.externals?.imdb?:"",movie.id)
         }
         Glide.with(holder.itemView.context)
             .load(movie.image?.medium)

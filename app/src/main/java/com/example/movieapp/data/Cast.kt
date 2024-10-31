@@ -2,9 +2,9 @@ package com.example.movieapp.data
 
 
 import com.google.gson.annotations.SerializedName
-class ActorX : ArrayList<Actor>()
+class ActorX : ArrayList<Cast>()
 
-data class Actor(
+data class Cast(
     @SerializedName("character")
     val character: Character? = Character(),
     @SerializedName("person")

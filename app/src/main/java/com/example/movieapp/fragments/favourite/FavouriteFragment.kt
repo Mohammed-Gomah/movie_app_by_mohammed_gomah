@@ -31,9 +31,9 @@ class FavouriteFragment : Fragment() {
     }
 
     private fun setupFavouriteAdapter() {
-        favouriteAdapter = FavouriteAdapter(listOf()) { movie ->
+        favouriteAdapter = FavouriteAdapter(listOf()) { movie ,id->
             val action =
-                FavouriteFragmentDirections.actionFavouriteFragment2ToDetailsFragment(movie)
+                FavouriteFragmentDirections.actionFavouriteFragment2ToDetailsFragment(movie,id)
             findNavController().navigate(action)
         }
         val layoutManager = GridLayoutManager(requireContext(), 2)

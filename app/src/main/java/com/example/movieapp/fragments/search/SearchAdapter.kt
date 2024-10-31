@@ -14,7 +14,7 @@ import com.example.movieapp.data.Movie
 
 class SearchAdapter(
     private var movieList: List<Movie>,
-    val onItemClick: (String) -> Unit
+    val onItemClick: (String,Int) -> Unit
 ) :
     RecyclerView.Adapter<SearchAdapter.MovieViewHolder>() {
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,7 +38,7 @@ class SearchAdapter(
         holder.movieName.text = movie.name ?: "No Name"
         holder.movieRating.text = movie.rating?.average?.toString() ?: "undefined"
         holder.searchCard.setOnClickListener {
-            onItemClick(movie.externals?.imdb ?: "")
+            onItemClick(movie.externals?.imdb ?: "",movie.id)
         }
         Glide.with(holder.itemView.context)
             .load(movie.image?.medium)

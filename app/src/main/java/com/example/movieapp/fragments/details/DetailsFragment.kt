@@ -22,7 +22,8 @@ class DetailsFragment : Fragment() {
     private val detailsViewModel: DetailsViewModel by viewModels()
     private val args: DetailsFragmentArgs by navArgs()
     private lateinit var movieId: String
-    private lateinit var actorAdapter: ActorAdapter
+    private lateinit var castAdapter: CastAdapter
+    private val castViewModel: CastViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -36,11 +37,28 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val id = args.id
         movieId = args.movieId
+
         getMovieDetailsById(movieId)
         prepareActorAdapter()
         observeFavouriteToggle()
         setupFavouriteToggle()
+        getCastById(id)
+       setupBackButton()
+    }
+    private fun setupBackButton(){
+        binding.back.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
+    }
+
+    private fun getCastById(id:Int){
+        castViewModel.cast.observe(viewLifecycleOwner){cast->
+            castAdapter.setCast(cast)
+        }
+        castViewModel.getCastById(id)
+
     }
 
     private fun observeFavouriteToggle() {
@@ -71,20 +89,20 @@ class DetailsFragment : Fragment() {
 
 
     private fun prepareActorAdapter() {
-        actorAdapter = ActorAdapter(listOf())
+        castAdapter = CastAdapter(listOf())
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.topCastRecyclerview.apply {
             this.layoutManager = layoutManager
-            adapter = actorAdapter
+            adapter = castAdapter
         }
     }
 
     private fun getMovieDetailsById(id: String) {
         detailsViewModel.getMovieDetailsById(id)
-        binding.progressBar.visibility = View.VISIBLE
+        binding.searchLottieAnimation.visibility = View.VISIBLE
         detailsViewModel.movie.observe(viewLifecycleOwner) { movie ->
-            binding.progressBar.visibility = View.GONE
+            binding.searchLottieAnimation.visibility = View.GONE
             binding.apply {
                 detailsMovieName.text = movie.name
                 movieSummary.text = Html.fromHtml(movie.summary, Html.FROM_HTML_MODE_LEGACY)
