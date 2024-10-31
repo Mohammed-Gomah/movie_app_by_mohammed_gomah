@@ -1,4 +1,4 @@
-package com.example.movieapp.home
+package com.example.movieapp.fragments.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +39,7 @@ class HomeAdapter(
             onItemClick(movie.externals?.imdb ?: "")
         }
         Glide.with(holder.itemView.context)
-            .load(movie.image?.original)
+            .load(movie.image?.medium)
             .into(holder.movieImage)
     }
 

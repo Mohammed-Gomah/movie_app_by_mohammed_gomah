@@ -1,4 +1,4 @@
-package com.example.movieapp.search
+package com.example.movieapp.fragments.search
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,12 +18,10 @@ class SearchAdapter(
 ) :
     RecyclerView.Adapter<SearchAdapter.MovieViewHolder>() {
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val movieName : TextView = itemView.findViewById(R.id.searchMovieName)
         val searchImage: ImageView = itemView.findViewById(R.id.searchImageItem)
-        val searchMovie: TextView = itemView.findViewById(R.id.searchItemName)
         val searchCard: CardView = itemView.findViewById(R.id.searchCard)
-        val movieRating : TextView = itemView.findViewById(R.id.itemRate)
-        val movieStartDate : TextView = itemView.findViewById(R.id.startDate)
-        val movieEndDate : TextView = itemView.findViewById(R.id.endDate)
+        val movieRating : TextView = itemView.findViewById(R.id.searchMovieRate)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -37,10 +35,8 @@ class SearchAdapter(
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movieList[position]
-        holder.searchMovie.text = movie.name ?: "No Name"
-        holder.movieRating.text = movie.rating?.average.toString()
-        holder.movieStartDate.text = movie.premiered
-        holder.movieEndDate.text = movie.ended
+        holder.movieName.text = movie.name ?: "No Name"
+        holder.movieRating.text = movie.rating?.average?.toString() ?: "undefined"
         holder.searchCard.setOnClickListener {
             onItemClick(movie.externals?.imdb ?: "")
         }

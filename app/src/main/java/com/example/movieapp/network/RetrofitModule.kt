@@ -9,6 +9,7 @@ object RetrofitModule {
     const val SHOW_END_POINT = "shows"
     const val SEARCH_END_POINT = "search/shows"
     const val DETAILS_END_POINT = "lookup/shows"
+    const val CAST_END_POINT = "shows/{id}/cast"
 
     val retrofitClient : Retrofit by lazy {
         Retrofit.Builder()

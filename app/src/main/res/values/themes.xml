@@ -3,12 +3,14 @@
     <style name="Base.Theme.MovieApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-         <item name="android:statusBarColor">@color/brown</item>
+         <item name="android:statusBarColor">@color/darkBlue</item>
     </style>
 
     <style name="Widget.BottomNavigationView">
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+
 
     <style name="Theme.MovieApp" parent="Base.Theme.MovieApp" />
 

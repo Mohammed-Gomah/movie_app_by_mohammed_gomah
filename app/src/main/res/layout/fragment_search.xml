@@ -3,46 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/searchCard"
+    android:background="@color/lightDarkBlue"
     android:layout_height="match_parent"
-    tools:context=".search.SearchFragment">
+    tools:context=".fragments.search.SearchFragment">
 
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="20dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_height="0dp"
+        android:src="@drawable/baseline_arrow_back_ios_24"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/searchView" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-
-        android:layout_marginHorizontal="6dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginVertical="16dp"
         android:background="@drawable/searchview_shape"
         app:iconifiedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="Search for movie" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:queryBackground="@android:color/transparent"
+        app:queryHint="Search for movie , series , animation" />
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/searchRecyclerview"
+        android:id="@+id/searchRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="6dp"
+        android:layout_marginVertical="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchView" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/searchLottieAnimation"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:visibility="gone"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/skiliton_hey_hey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchView"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/movie_wait" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

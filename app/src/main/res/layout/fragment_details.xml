@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightBlack"
-    tools:context=".details.DetailsFragment">
+    tools:context=".fragments.details.DetailsFragment">
 
 
     <ScrollView
@@ -54,7 +54,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:ellipsize="end"
                 android:lines="1"
                 android:text="MOVIE NAME"
                 android:textColor="@color/white"
@@ -127,7 +126,7 @@
                     android:id="@+id/likeSample"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:layout_marginTop="2.5dp"
+                    android:layout_marginTop="1dp"
                     android:layout_weight="10"
                     android:scaleType="fitStart"
                     android:src="@drawable/like_sample" />
@@ -173,10 +172,12 @@
                 android:id="@+id/about"
                 android:layout_width="match_parent"
                 android:text="About"
-                android:textColor="@color/white"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_margin="10dp"
                 android:padding="6dp"
+                android:textSize="15dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/btnOfficialSite" />
@@ -192,6 +193,28 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/about" />
+
+            <TextView
+                android:id="@+id/topCastTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="6dp"
+                android:text="Top Cast"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/movieSummary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/topCastRecyclerview"
+                android:layout_width="match_parent"
+                tools:listitem="@layout/actor_item"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/topCastTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

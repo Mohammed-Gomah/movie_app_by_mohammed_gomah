@@ -1,4 +1,4 @@
-package com.example.movieapp.home
+package com.example.movieapp.fragments.home
 
 import android.content.Context
 import android.content.SharedPreferences

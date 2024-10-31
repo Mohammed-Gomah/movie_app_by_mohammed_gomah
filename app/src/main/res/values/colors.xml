@@ -3,10 +3,20 @@
     <color name="black">#FF000000</color>
     <color name="lightBlack">#131515</color>
     <color name="gray">#A6A5A6</color>
-    <color name="darkGray">#7C797C</color>
+    <color name="lightGray">#7C797C</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#009B8B</color>
     <color name="brown">#613D2C</color>
+    <color name="lightBrown">#7E6153</color>
+    <color name="lightBrown2">#D6A994</color>
     <color name="orange">#FF9800</color>
     <color name="orangeRed">#F13900</color>
+    <color name="darkBlue">#1A1A2E</color>
+    <color name="lightDarkBlue">#27273C</color>
+    <color name="yellowGold">#FBAF00</color>
+    <color name="redRose">#C72C41</color>
+    <color name="sky">#00BFFF</color>
+    <color name="darkGray">#4B4B4B</color>
+    <color name="violet">#6A5ACD</color>
+    <color name="specialWhite">#F5F5F5</color>
 </resources>

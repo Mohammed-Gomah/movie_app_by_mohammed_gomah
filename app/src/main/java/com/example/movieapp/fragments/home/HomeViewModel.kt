@@ -1,17 +1,20 @@
-package com.example.movieapp.home
+package com.example.movieapp.fragments.home
 
-import android.content.SharedPreferences
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movieapp.data.Movie
+import com.example.movieapp.movieRoom.MovieDatabase
 import com.example.movieapp.repository.MovieRepository
 import kotlinx.coroutines.launch
 
 
-class HomeViewModel : ViewModel() {
-    private val repository = MovieRepository()
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
+    private val movieDao = MovieDatabase.getDatabase(application).movieDao()
+    private val repository = MovieRepository(movieDao)
 
     private val _movie = MutableLiveData<List<Movie>>()
     val movie: LiveData<List<Movie>> = _movie

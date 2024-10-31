@@ -1,4 +1,4 @@
-package com.example.movieapp.search
+package com.example.movieapp.fragments.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -32,6 +32,9 @@ class SearchFragment : Fragment() {
         prepareAdapter()
         setupSearchListener()
         observeViewModel()
+        binding.btnBack.setOnClickListener {
+            requireActivity().finish()
+        }
 
     }
 
@@ -41,16 +44,18 @@ class SearchFragment : Fragment() {
             val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(movieImdb)
             findNavController().navigate(action)
         }
-        binding.searchRecyclerview.apply {
+        binding.searchRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = searchAdapter
         }
     }
 
+
     private fun observeViewModel() {
         binding.searchLottieAnimation.visibility = View.VISIBLE
         movieViewModel.movie.observe(viewLifecycleOwner) { movies ->
             binding.searchLottieAnimation.visibility = View.GONE
+
             searchAdapter.filterList(movies)
         }
     }
@@ -62,17 +67,16 @@ class SearchFragment : Fragment() {
             }
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (!newText.isNullOrEmpty()) {
-
                     movieViewModel.searchMovieByName(newText)
-                }else{
-                    binding.searchLottieAnimation.visibility = View.GONE
-                    searchAdapter.filterList(emptyList())
+                } else {
+                    binding.searchRecyclerView.visibility = View.GONE
                     binding.searchLottieAnimation.visibility = View.VISIBLE
+                    searchAdapter.filterList(emptyList())
                 }
                 return true
             }
-        })
 
+        })
     }
 
 }
